@@ -1,0 +1,12 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 382px;  
+    height: 100px;
+    overflow: hidden;  
+    margin: auto;   
+    padding: 80px;  
+    background: #23463f; 
+    margin-top: 200px;
+}

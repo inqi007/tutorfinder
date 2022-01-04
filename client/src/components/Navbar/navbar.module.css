@@ -1,0 +1,29 @@
+.nav {
+    background-color: rgb(224, 224, 224);
+    overflow: hidden;
+}
+
+.links {
+    float: right;
+    display: block;
+    color: #7998fc;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.links:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.linksLeft {
+    float: left;
+    display: block;
+    color: #7998fc;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
