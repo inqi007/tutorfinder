@@ -1,35 +1,26 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login/index'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar"
+import Home from "./pages/Home";
+import Landing from "./pages/Landing";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 const App = () => {
-  /*const [data, setData] = useState();
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
-
-  );*/
-  
   return (
     <div>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} exact></Route>
-        </Routes>
-      </Router>
+      <Navbar/>
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} exact></Route>
+            <Route path="/home" element={<Home />} exact></Route>
+            <Route path="/signin" element={<SignIn />} exact></Route>
+            <Route path="/signup" element={<SignUp />} exact></Route>
+          </Routes>
+        </Router>
+      </div>
     </div>
-  )
-
-}
+  );
+};
 
 export default App;

@@ -1,0 +1,27 @@
+.two_column_layout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.left {
+  background-color: #244D8A;
+  max-height: 40vh;
+  h1 {
+    font-family: 'Raleway', sans-serif;
+   // font-size: 65px;
+    color: white;
+    text-align: center;
+  }
+  p {
+      color: white;
+  //    font-size: 22px;
+  }
+}
+
+.right {
+  background-color: blue;
+}
