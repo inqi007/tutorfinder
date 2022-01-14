@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import "./SignUp.scss";
 import Auth from "../images/auth.svg";
+import { Link } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@material-ui/core";
 import TextField from "@mui/material/TextField";
@@ -200,9 +201,10 @@ export default function SignUp() {
             </div>
           </form>
           <div className="login_option">
-          <p>Already have an account? <a>Log in</a></p>
+            <p>
+              Already have an account? <Link to="/signin">Log in</Link>
+            </p>
           </div>
-         
         </div>
       </div>
     </div>
