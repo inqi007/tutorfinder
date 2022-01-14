@@ -1,29 +1,91 @@
+import * as React from "react";
+import { useState } from "react";
 import "./SignUp.scss";
 import Auth from "../images/auth.svg";
-import * as React from "react";
+import MenuItem from "@mui/material/MenuItem";
+import { Grid } from "@material-ui/core";
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { useTheme } from "@mui/material/styles";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+
+// do password salt and stuff
+// dropdown
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: 60 * 4.5 + 8,
+      width: 250,
+    },
+  },
+};
+
+const subjects = ["English", "Bangla", "Mathematics"];
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
+
 export default function SignUp() {
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
+  const theme = useTheme();
+  const [personSubject, setPersonSubject] = React.useState([]);
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+  const [enteredFirstName, setEnteredFirstName] = useState("");
+  const [enteredLastName, setEnteredLastName] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredNumber, setEnteredNumber] = useState("");
+  const [enteredInstitution, setEnteredInstitution] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+
+  const firstNameInputChangeHandler = (event) => {
+    setEnteredFirstName(event.target.value);
+  };
+  const lastNameInputChangeHandler = (event) => {
+    setEnteredLastName(event.target.value);
+  };
+  const emailInputChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+  const numberInputChangeHandler = (event) => {
+    setEnteredNumber(event.target.value);
+  };
+  const institutionInputChangeHandler = (event) => {
+    setEnteredInstitution(event.target.value);
+  };
+  const passwordInputChangeHandler = (event) => {
+    setEnteredPassword(event.target.value);
   };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
+  const formSubmission = (event) => {
     event.preventDefault();
+    console.log(
+      enteredEmail,
+      enteredPassword,
+      enteredFirstName,
+      enteredLastName,
+      enteredNumber,
+      enteredInstitution,
+      personSubject
+    );
   };
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonSubject(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+
   return (
     <div className="sign_up">
       <div className="box">
@@ -39,7 +101,108 @@ export default function SignUp() {
           <img src={Auth} width="100%" height="auto"></img>
         </div>
         <div className="right">
-          <h1>Sign up for an account</h1>
+          <form onSubmit={formSubmission}>
+            <h1>Sign up for an account</h1>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  id="outlined-basic"
+                  label="First Name"
+                  variant="outlined"
+                  fullWidth
+                  onChange={firstNameInputChangeHandler}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  id="outlined-basic"
+                  label="Last Name"
+                  variant="outlined"
+                  fullWidth
+                  onChange={lastNameInputChangeHandler}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="outlined-basic"
+                  label="Email Address"
+                  variant="outlined"
+                  fullWidth
+                  onChange={emailInputChangeHandler}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="outlined-basic"
+                  label="Phone Number"
+                  variant="outlined"
+                  fullWidth
+                  onChange={numberInputChangeHandler}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="outlined-basic"
+                  label="Institution Name"
+                  variant="outlined"
+                  fullWidth
+                  onChange={institutionInputChangeHandler}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-multiple-name-label">
+                    Subjects
+                  </InputLabel>
+                  <Select
+                    fullWidth
+                    labelId="demo-multiple-name-label"
+                    id="demo-multiple-name"
+                    multiple
+                    value={personSubject}
+                    onChange={handleChange}
+                    input={<OutlinedInput label="Subjects" />}
+                    MenuProps={MenuProps}
+                  >
+                    {subjects.map((subject) => (
+                      <MenuItem
+                        key={subject}
+                        value={subject}
+                        style={getStyles(subject, personSubject, theme)}
+                      >
+                        {subject}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="outlined-basic"
+                  label="Password"
+                  variant="outlined"
+                  fullWidth
+                  onChange={passwordInputChangeHandler}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="outlined-basic"
+                  label="Re-type Password"
+                  variant="outlined"
+                  fullWidth
+                />
+              </Grid>
+            </Grid>
+            <div className="sign_up_button">
+              <button className="button">Sign Up</button>
+            </div>
+          </form>
+          <div className="login_option">
+          <p>Already have an account? <a>Log in</a></p>
+          </div>
+         
         </div>
       </div>
     </div>

@@ -1,0 +1,28 @@
+.button {
+  border-radius: 20px !important;
+  padding: 6px 10px;
+  font-size: 16px !important;
+  background-color: var(--dark-green);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 4px 0 var(--shadow-color);
+}
+
+.button.secondary {
+  background-color: #00000000;
+  border: 1px solid black;
+  color: black;
+}
+
+.button.primary {
+  border: 1px solid var(--dark-green) !important;
+}
+
+.button.big {
+  font-size: 24px !important;
+  padding: 12px 30px;
+}
+
+.button.biig {
+  font-size: 36px !important;
+}
