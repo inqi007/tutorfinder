@@ -39,10 +39,10 @@ export default function SignIn() {
         </div>
         <div className="right">
           <form onSubmit={formSubmission}>
-            <h1>Sign up for an account</h1>
+            <h1>Login to your account</h1>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField
+                <TextField //input for email
                   id="outlined-basic"
                   label="Email Address"
                   variant="outlined"
@@ -51,10 +51,11 @@ export default function SignIn() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField //input for password
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
+                  type="password"
                   fullWidth
                   onChange={passwordInputChangeHandler}
                 />

@@ -106,7 +106,7 @@ export default function SignUp() {
             <h1>Sign up for an account</h1>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <TextField
+                <TextField //input for first name
                   id="outlined-basic"
                   label="First Name"
                   variant="outlined"
@@ -115,7 +115,7 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField
+                <TextField //input for last name
                   id="outlined-basic"
                   label="Last Name"
                   variant="outlined"
@@ -124,7 +124,7 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField //input for email
                   id="outlined-basic"
                   label="Email Address"
                   variant="outlined"
@@ -133,7 +133,7 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField //input for phone number
                   id="outlined-basic"
                   label="Phone Number"
                   variant="outlined"
@@ -142,7 +142,7 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField //input for institution name
                   id="outlined-basic"
                   label="Institution Name"
                   variant="outlined"
@@ -150,7 +150,7 @@ export default function SignUp() {
                   onChange={institutionInputChangeHandler}
                 />
               </Grid>
-
+              // list for subjects to choose
               <Grid item xs={12}>
                 <FormControl fullWidth>
                   <InputLabel id="demo-multiple-name-label">
@@ -179,10 +179,11 @@ export default function SignUp() {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <TextField //input for password
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
+                  type="password"
                   fullWidth
                   onChange={passwordInputChangeHandler}
                 />
@@ -192,6 +193,7 @@ export default function SignUp() {
                   id="outlined-basic"
                   label="Re-type Password"
                   variant="outlined"
+                  type="password"
                   fullWidth
                 />
               </Grid>
