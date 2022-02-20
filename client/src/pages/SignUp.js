@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import axios from "axios";
 import "./SignUp.scss";
 import Auth from "../images/auth.svg";
 import { Link } from "react-router-dom";
@@ -44,6 +45,7 @@ export default function SignUp() {
   const [enteredNumber, setEnteredNumber] = useState("");
   const [enteredInstitution, setEnteredInstitution] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
 
   const firstNameInputChangeHandler = (event) => {
     setEnteredFirstName(event.target.value);
@@ -63,6 +65,9 @@ export default function SignUp() {
   const passwordInputChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
   };
+  const passwordConfirmInputChangeHandler = (event) => {
+    setEnteredConfirmPassword(event.target.value);
+  };
 
   const formSubmission = (event) => {
     event.preventDefault();
@@ -74,8 +79,22 @@ export default function SignUp() {
       enteredNumber,
       enteredInstitution,
       personSubject
-    );
-  };
+    )
+    try {
+      axios ({
+        method: 'POST',
+        url: 'http://localhost:3001/register',
+        data: {
+          "name": enteredFirstName,
+          "email": enteredEmail,
+          "password": enteredPassword,
+          "passwordConfirm": enteredConfirmPassword
+        }
+      })
+    } catch(err) {
+      console.log(err.response.data)
+    }
+  }
 
   const handleChange = (event) => {
     const {
@@ -150,8 +169,8 @@ export default function SignUp() {
                   onChange={institutionInputChangeHandler}
                 />
               </Grid>
-              // list for subjects to choose
-              <Grid item xs={12}>
+              
+              <Grid item xs={12}> 
                 <FormControl fullWidth>
                   <InputLabel id="demo-multiple-name-label">
                     Subjects
@@ -195,6 +214,7 @@ export default function SignUp() {
                   variant="outlined"
                   type="password"
                   fullWidth
+                  onChange={passwordConfirmInputChangeHandler}
                 />
               </Grid>
             </Grid>
