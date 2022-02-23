@@ -1,0 +1,18 @@
+.block {
+  width: 600px;
+  height: 60px;
+  background: linear-gradient(180deg, #9fbadf 0%, #9bc8dc 100%);
+  border-radius: 37.5px;
+  color: white;
+  margin: 20px 20px 20px 0px;
+  .center {
+    p {
+      padding-top: 20px;
+      padding-left: 70px;
+    }
+  }
+
+  img {
+    float: left;
+  }
+}
