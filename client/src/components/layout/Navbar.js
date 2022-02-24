@@ -24,7 +24,15 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="brand-title"><a href="/">TutorFinder</a></div>
+      <div>
+        <a className="brand-title" href="/">
+          TutorFinder
+        </a>
+      </div>
+      <a className="tutorlist" href="/signin">
+        Tutor List
+      </a>
+
       <div className="toggle-button" onClick={toggleNavbar}>
         <span className="bar"></span>
         <span className="bar"></span>
