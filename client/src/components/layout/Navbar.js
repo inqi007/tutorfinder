@@ -24,7 +24,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="brand-title">TutorFinder</div>
+      <div className="brand-title"><a href="/">TutorFinder</a></div>
       <div className="toggle-button" onClick={toggleNavbar}>
         <span className="bar"></span>
         <span className="bar"></span>

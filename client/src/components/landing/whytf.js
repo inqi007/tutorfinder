@@ -1,11 +1,11 @@
 import "./whytf.scss";
 import search from "../../images/search.png";
-export default function whytf() {
+export default function whytf(prop) {
   return (
     <div className="block">
-      <img src={search} width="60" height="60"></img>
+      <img src={prop.pic} width="60" height="60"></img>
       <div className="center">
-        <p>Choose an experienced tutor that fits your budget</p>
+        <p>{prop.text}</p>
       </div>
     </div>
   );
