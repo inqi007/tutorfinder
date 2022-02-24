@@ -1,11 +1,25 @@
 import "./Navbar.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Navbar() {
   const [isActive, setActive] = useState(false);
+  const [loggedin, setLoggedin] = useState(false);
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem("authenticated");
+    if (auth) {
+      setLoggedin(true);
+    } else {
+      setLoggedin(false);
+    }
+  }, []);
 
   const toggleNavbar = () => {
     setActive(!isActive);
+  };
+
+  const handleLogout = () => {
+    sessionStorage.setItem("authenticated", false);
   };
 
   return (
@@ -17,14 +31,24 @@ function Navbar() {
         <span className="bar"></span>
       </div>
       <div className={isActive ? "active navbar-links" : "navbar-links"}>
-        <ul>
-          <li>
-            <a href="/signin">Log in</a>
-          </li>
-          <li>
-            <a href="/signup">Sign up</a>
-          </li>
-        </ul>
+        {loggedin ? (
+          <ul>
+            <li>
+              <a href="/signin">Log in</a>
+            </li>
+            <li>
+              <a href="/signup">Sign up</a>
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <a href="/signin" onClick={handleLogout}>
+                Sign out
+              </a>
+            </li>
+          </ul>
+        )}
       </div>
     </nav>
   );
